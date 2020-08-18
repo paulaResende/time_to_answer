@@ -116,6 +116,19 @@
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'admins_backoffice' %>
+
+    <% if notice %>
+        <script>
+            $.notify({
+                // options
+                message: '<%= notice %>'
+            },{
+                // settings
+                type: 'success'
+            });
+        </script>
+    <% end %>
+
 </body>
 
 </html>
