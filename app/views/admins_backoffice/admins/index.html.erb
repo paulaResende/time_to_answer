@@ -2,19 +2,20 @@
   <h1 class="page-header">Listando administradores</h1>
 </div>
 
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-  <tr>
-      <th>Id</th>
-      <th>Email</th>
-      <th>
-        <%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle" do %>
-          <i class="glyphicon-plus"></i>
-        <%end %>
-      </th>
+<div>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>
+          <%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle" do %>
+            <i class="glyphicon-plus"></i>
+          <%end %>
+        </th>
       </tr>
-  </thead>
-  <tbody>
+      </thead>
+      <tbody>
       <%  @admins.each do |admin| %>
         <tr>
           <td><%= admin.id %></td>
@@ -28,12 +29,14 @@
             <%= link_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data: {confirm: "Deseja realmente excluir esse administrador?"} do %>
               <i class="fa fa-minus"></i>
             <% end %>
-
             </button>
           </td>
         </tr>
       <% end %>
-  </tbody>
+      </tbody>
+    </table>
 
-  <%= paginate @admins %>
-</table>
+    <div class="text-center">
+      <%= paginate @admins %>
+    </div>
+</div>
