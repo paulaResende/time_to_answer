@@ -118,7 +118,7 @@
     <%= javascript_include_tag 'admins_backoffice' %>
 
     <% if notice %>
-        <script>
+        <%= javascript_tag do %>
             $.notify({
                 // options
                 message: '<%= notice %>'
@@ -126,7 +126,7 @@
                 // settings
                 type: 'success'
             });
-        </script>
+        <% end %>
     <% end %>
 
 </body>
