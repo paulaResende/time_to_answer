@@ -13,7 +13,7 @@ class AdminsBackoffice::QuestionsController <
   def create
     @question = Question.new(params_question)
     if @question.save
-      redirect_to admins_backoffice_question_path, notice: "Questão cadastrada com sucesso!"
+      redirect_to admins_backoffice_questions_path, notice: "Questão cadastrada com sucesso!"
     else
       render :new
     end
@@ -24,7 +24,7 @@ class AdminsBackoffice::QuestionsController <
 
   def update
     if @question.update(params_question)
-      redirect_to admins_backoffice_question_path, notice: "Questão atualizada com sucesso!"
+      redirect_to admins_backoffice_questions_path, notice: "Questão atualizada com sucesso!"
     else
       render :edit
     end
