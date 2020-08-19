@@ -6,3 +6,4 @@
 //= require metismenu/dist/metisMenu
 //= require sb-admin-2
 //= require bootstrap-growl/bootstrap-notify
+//= require cocoon

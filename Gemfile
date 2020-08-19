@@ -13,6 +13,7 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'faker'
 gem 'kaminari'
+gem 'cocoon'
 
 gem 'jquery-rails'
 gem 'turbolinks'
