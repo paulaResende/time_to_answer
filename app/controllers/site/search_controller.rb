@@ -1,6 +1,6 @@
-class Site::WelcomeController < SiteController
+class Site::SearchController < SiteController
 
-  def index
+  def questions
     @questions = Question.includes(:answers).page params[:page]
   end
 end
