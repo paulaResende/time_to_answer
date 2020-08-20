@@ -1,3 +1,5 @@
 class Site::WelcomeController < SiteController
-  def index; end
+  def index
+    @questions = Question.all
+  end
 end
