@@ -6,12 +6,18 @@ class Question < ApplicationRecord
   #Kaminari
   paginates_per 5
 
-  def self.search(params)
-    Question.includes(:answers)
-            .page(params[:page])
-            .where("lower(description) LIKE ?","%#{params[:term].downcase}%")
-  end
+  #Scopes devem ser utilizados com pesquisas, queries no banco de dados
+  scope :search, -> (params) {
+    includes(:answers)
+        .page(params[:page])
+        .where("lower(description) LIKE ?","%#{params[:term].downcase}%")
+  }
 
+  scope :last_questions, -> (params) {
+    includes(:answers)
+        .order('created_at desc')
+        .page params[:page]
+  }
 
 end
 
