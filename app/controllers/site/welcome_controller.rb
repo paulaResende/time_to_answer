@@ -1,4 +1,3 @@
 class Site::WelcomeController < SiteController
-  def index
-  end
+  def index; end
 end
