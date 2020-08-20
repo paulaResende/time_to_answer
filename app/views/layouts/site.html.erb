@@ -22,51 +22,68 @@
 
 <body>
 <div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Time to answer</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% unless user_signed_in? %>
+              <li><%= link_to 'Entrar', new_user_session_path %></li>
+              <li><%= link_to 'Cadastrar-se', new_user_registration_path %></li>
+            <% else %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= current_user.email %> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to users_backoffice_welcome_index_path do %>
+                    <i class="fa fa-user fa-fw"></i> Perfil
+                  <% end %>
+                 </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out fa-fw"></i> Sair
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container-fluid -->
+    </nav>
 
-  <!-- Static navbar -->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Time to answer</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <% unless user_signed_in? %>
-            <li><%= link_to 'Entrar', new_user_session_path %></li>
-            <li><%= link_to 'Cadastrar-se', new_user_registration_path %></li>
-          <% else %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= current_user.email %> <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out fa-fw"></i> Sair
-                <% end %>
-              </li>
-            </ul>
-          </li>
-          <% end %>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div><!--/.container-fluid -->
-  </nav>
-
-  <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <%= yield %>
-  </div>
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <%= yield %>
+    </div>
 
 
-</div> <!-- /container -->
+  </div> <!-- /container -->
 
-<%= javascript_include_tag 'application' %>
-<%= javascript_include_tag 'site' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'site' %>
+
+    <% if notice %>
+      <%= javascript_tag do %>
+        $.notify({
+        // options
+        message: '<%= notice %>'
+        },{
+        // settings
+        type: 'success'
+        });
+    <% end %>
+  <% end %>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
