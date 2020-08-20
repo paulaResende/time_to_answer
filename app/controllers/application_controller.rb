@@ -4,10 +4,12 @@ class ApplicationController < ActionController::Base
   private
 
   def layout_by_resource
-    if devise_controller? and resource_class == Admin
-      "admin_devise"
-    else
-      "application"
-    end
+    #condicional ternário utilizando metaprogramação
+    devise_controller? ? "#{resource_class.to_s.downcase}_devise" : "application"
   end
+
+  #if devise_controler
+  # '{resource_class.to_s.downcase}_devise'
+  # else 'application'
 end
+
