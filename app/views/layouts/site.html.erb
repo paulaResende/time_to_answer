@@ -73,8 +73,11 @@
 
     <!-- Main component for a primary marketing message or call to action -->
   <div class="jumbotron">
-    <h1>Questões</h1>
-    <p>Lalala</p>
+      <% unless params[:term]  %>
+          <h3>Últimas perguntas cadastradas...</h3>
+      <% else %>
+          <h3><%= "Resultados para o termo #{params[:term]}... "%></h3>
+      <% end %>
   </div>
       <%= yield %>
   </div> <!-- /container -->
