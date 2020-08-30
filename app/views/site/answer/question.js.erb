@@ -1,0 +1,26 @@
+var element = document.getElementById("submit_<%= @answer.question_id%>");
+
+element.classList.remove("btn-default");
+element.classList.remove("btn-success");
+element.classList.remove("btn-danger");
+
+if (<%= @answer.correct %>){
+    element.classList.add("btn-success");
+    $.notify({
+        // options
+        message: 'Você acertou!'
+    },{
+        // settings
+        type: 'success'
+    });
+}
+else {
+    element.classList.add("btn-danger");
+    $.notify({
+        // options
+        message: 'Você errou!'
+    },{
+        // settings
+        type: 'danger'
+    });
+}
