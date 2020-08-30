@@ -9,7 +9,8 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              <%= link_to question.subject.description, site_path(question.subject_id), class:"label label-info" %>
+              <%= link_to "#{question.subject.description} (#{question.subject.questions.count})", site_path(question.subject_id, question.subject.description),
+                          class:"label label-info" %>
               <%= question.description %>
             </h3>
           </div>

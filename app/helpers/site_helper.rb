@@ -7,7 +7,7 @@ module SiteHelper
     when 'questions'
       "Resultados para o termo \"#{params[:term]}\"... "
     when 'subject'
-      "Filtradas por assunto \"#{params[:subject_id]}\"..."
+      "Filtradas por assunto \"#{params[:subject]}\"..."
     end
   end
 end
