@@ -12,7 +12,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              <span class="label label-info"><%= question.subject.description %></span>
+              <%= link_to question.subject.description, site_path(question.subject_id), class:"label label-info" %>
               <%= question.description %>
             </h3>
           </div>

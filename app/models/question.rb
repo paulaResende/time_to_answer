@@ -7,16 +7,22 @@ class Question < ApplicationRecord
   paginates_per 5
 
   #Scopes devem ser utilizados com pesquisas, queries no banco de dados
-  scope :search, -> (params) {
+  scope :search, lambda { |params|
     includes(:answers)
-        .page(params[:page])
-        .where("lower(description) LIKE ?","%#{params[:term].downcase}%")
+      .page(params[:page])
+      .where("lower(description) LIKE ?","%#{params[:term].downcase}%")
   }
 
-  scope :last_questions, -> (params) {
+  scope :last_questions, lambda { |params|
     includes(:answers)
-        .order('created_at desc')
-        .page params[:page]
+      .order('created_at desc')
+      .page params[:page]
+  }
+
+  scope :search_subject, lambda { |page, subject_id|
+    includes(:answers)
+      .page(page)
+      .where(subject_id: subject_id)
   }
 
 end
